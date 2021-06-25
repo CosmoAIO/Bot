@@ -1,19 +1,22 @@
 from datetime import datetime
 from pypresence import Presence
-from modules.currys_backend import Currys
+# from stores.currys_backend import Currys
+from termcolor import colored
 import time
 import os
 import time
 
 logo = """
-██╗   ██╗███╗   ██╗██╗████████╗███████╗ █████╗ ██╗ ██████╗ 
-██║   ██║████╗  ██║██║╚══██╔══╝██╔════╝██╔══██╗██║██╔═══██╗
-██║   ██║██╔██╗ ██║██║   ██║   █████╗  ███████║██║██║   ██║
-██║   ██║██║╚██╗██║██║   ██║   ██╔══╝  ██╔══██║██║██║   ██║
-╚██████╔╝██║ ╚████║██║   ██║   ███████╗██║  ██║██║╚██████╔╝
- ╚═════╝ ╚═╝  ╚═══╝╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ 
-
-"""
+ ██████╗ ██████╗ ███████╗███╗   ███╗ ██████╗  █████╗ ██╗ ██████╗ 
+██╔════╝██╔═══██╗██╔════╝████╗ ████║██╔═══██╗██╔══██╗██║██╔═══██╗
+██║     ██║   ██║███████╗██╔████╔██║██║   ██║███████║██║██║   ██║
+██║     ██║   ██║╚════██║██║╚██╔╝██║██║   ██║██╔══██║██║██║   ██║
+╚██████╗╚██████╔╝███████║██║ ╚═╝ ██║╚██████╔╝██║  ██║██║╚██████╔╝
+ ╚═════╝ ╚═════╝ ╚══════╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝ ╚═════╝
+""" + colored("""-----------------------------------------------------------------
+   CosmoAIO - Retail Beta Bot (Currently UK only) - Cooking EU
+-----------------------------------------------------------------
+""", "cyan")
 
 siteList = ["Currys", "Ebuyer", "Scan", "Overclockers", "Exit"]
 status_time = datetime.now().strftime("%X")
@@ -22,7 +25,7 @@ discordPresence = Presence("824754849102954527")
 
 
 def authentication():
-    os.system("title UniteAIO - Authenticating...")
+    os.system("title CosmoAIO - Authenticating...")
     print(f"[{status_time}] Checking Key")
     # add authentication process above welcome message
     time.sleep(.500)
@@ -31,7 +34,7 @@ def authentication():
 
 
 def updater():  # api needed to the server/host to track latest verion?
-    os.system("title UniteAIO - Checking for updates...")
+    os.system("title CosmoAIO - Checking for updates...")
     print(f"[{status_time}] Checking for Updates")
     # input - update downlader & installer
     time.sleep(.500)
@@ -41,14 +44,14 @@ def updater():  # api needed to the server/host to track latest verion?
 
 def main():
     discordPresence.connect()
-    discordPresence.update(state="Version 0.0.1", details="Running UniteAIO", large_image="logo", start=time.time())
+    discordPresence.update(state="Version 0.0.1", details="Running CosmoAIO", large_image="logo", start=time.time())
     os.system('cls' if os.name == 'nt' else 'clear')
     print(logo)
     authentication()
     time.sleep(.500)
     updater()
     time.sleep(.250)
-    os.system("title UniteAIO - Main Menu")
+    os.system("title CosmoAIO - Main Menu")
 
     print("")
     for i in range(0, len(siteList)):
@@ -56,18 +59,18 @@ def main():
     print("")
 
     selection = int(input("Please select an option: "))
-    eval(siteList[selection]+"()")
+    # eval(siteList[selection]+"()")
 
     if selection == 0:  # Currys
-        Currys.main()
+        import stores.currys_backend
     elif selection == 1:  # Ebuyer
-        scan.main()
+        print("1")
     elif selection == 2:  # Scan
-        overclockers.main()
+        print("2")
     else:  # Exit
         quit
 
 
 if __name__ == '__main__':
-    os.system("title UniteAIO")
+    os.system("title CosmoAIO")
     main()
