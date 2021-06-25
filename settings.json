@@ -1,7 +1,17 @@
 {
-    "Settings": {
         "Key": "",
-        "delay": "",
-        "Discord_Webhook": ""
-    }
+        "version": "0.0.1",
+        "captcha": {
+            "captchaMethod": "harvester",
+            "autosolve": {
+                "access_token": "",
+                "api_key": ""
+            },
+            "2captcha": {
+                "api_key": ""
+            },
+            "capmonster": {
+                "api_key": ""
+            }
+        }
 }
